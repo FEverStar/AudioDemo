@@ -1,0 +1,78 @@
+//
+//  VVAudioPlayerManager.m
+//  vvim
+//
+//  Created by gaoxiaowei on 16/3/11.
+//  Copyright © 2016年 51vv. All rights reserved.
+//
+
+#import "VVAudioPlayerManager.h"
+
+@implementation VVAudioPlayerManager
+
+#pragma mark *** Common methods ***
++(instancetype)shared{
+    static VVAudioPlayerManager * instance;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken,^{
+        instance = [[VVAudioPlayerManager alloc] init];
+        [instance Init];
+    });
+    return instance;
+}
+
+
+-(void)Init
+{
+    _playStatus =VVAudioPlayerStatus_Idle;
+}
+- (void)dealloc
+{
+   [self stop];
+}
+
+-(void)play:(NSString*)streamUrl{
+    [self stop];
+    _streamUrl =streamUrl;
+    NSURL *url=[[NSURL alloc]initWithString:streamUrl];
+    AFSoundItem *item =[[AFSoundItem alloc]initWithStreamingURL:url];
+    NSMutableArray *items= [NSMutableArray arrayWithObjects:item, nil];
+    _queue = [[AFSoundQueue alloc] initWithItems:items];
+    [_queue playCurrentItem];
+     _playStatus =VVAudioPlayerStatus_Playing;
+    [_queue listenFeedbackUpdatesWithBlock:^(AFSoundItem *item) {
+        NSLog(@"Item duration: %ld - time elapsed: %ld", (long)item.duration, (long)item.timePlayed);
+        if (_delegate!=nil && [_delegate respondsToSelector:@selector(OnAudioPlayChange: timePlayed:)]) {
+            [_delegate OnAudioPlayChange:item.duration timePlayed:item.timePlayed];
+        }
+        
+    } andFinishedBlock:^(AFSoundItem *nextItem) {
+        
+        NSLog(@"Finished item, next one is %@", nextItem.title);
+    }];
+
+}
+
+-(void)pause{
+    if (_queue!=nil) {
+        [_queue pause];
+         _playStatus =VVAudioPlayerStatus_Pause;
+    }
+}
+-(void)resume{
+    if (_queue!=nil) {
+        [_queue playCurrentItem];
+         _playStatus =VVAudioPlayerStatus_Playing;
+    }
+    
+}
+-(void)stop{
+    if (_queue!=nil) {
+        [_queue clearQueue];
+        _queue=nil;
+        _playStatus =VVAudioPlayerStatus_Idle;
+    }
+    
+}
+
+@end

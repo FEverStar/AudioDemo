@@ -1,0 +1,2 @@
+pod 'Masonry', '~> 0.6.2'
+pod 'AFSoundManager', '~> 2.1'

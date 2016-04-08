@@ -1,0 +1,44 @@
+//
+//  VVAudioPlayerManager.h
+//  vvim
+//
+//  Created by gaoxiaowei on 16/3/11.
+//  Copyright © 2016年 51vv. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "AFSoundManager.h"
+enum  VVAudioPlayerStatus{
+    VVAudioPlayerStatus_Idle=0,
+    VVAudioPlayerStatus_Playing,
+    VVAudioPlayerStatus_Pause
+    
+};
+
+@protocol VVAudioPlayerManagerDelegate <NSObject>
+@optional
+-(void) OnAudioPlayChange:(NSInteger)duration timePlayed:(NSInteger)timePlayed;
+
+@end
+
+@interface VVAudioPlayerManager : NSObject
+{
+
+}
+@property (nonatomic, strong) AFSoundPlayback *playback;
+@property (nonatomic, strong) AFSoundQueue *queue;
+
+@property (nonatomic,copy) NSString* streamUrl;//url
+@property (nonatomic,assign) enum VVAudioPlayerStatus playStatus;//当前播放状态
+@property (nonatomic) NSInteger duration;//播放总时长
+@property (nonatomic) NSInteger timePlayed;//已播放时长
+@property(weak,nonatomic)id<VVAudioPlayerManagerDelegate> delegate;
+@property (nonatomic,strong) NSString * picUrl;//图片url
+@property (nonatomic,strong) NSString * audioTitle;//标题
+
+
+
+-(void)play:(NSString*)streamUrl;
+-(void)pause;
+-(void)resume;
+@end
