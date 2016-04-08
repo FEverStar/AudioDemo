@@ -10,6 +10,7 @@
 		1E8193BCC545BFBC77B0AE27 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D8C3279F0BAF5CDA6D2AD857 /* libPods.a */; };
 		3C857BE61CAA893700F353C5 /* AudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C857BE41CAA893700F353C5 /* AudioPlayer.m */; };
 		3C89D26A1CB7A25100FF3A11 /* 梁朝伟.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C89D2691CB7A25100FF3A11 /* 梁朝伟.png */; };
+		3C89D26E1CB7A8EB00FF3A11 /* VVAudioPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C89D26C1CB7A8EB00FF3A11 /* VVAudioPlayerManager.m */; };
 		3CF0293B1C93B0FA0029DE1A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF0293A1C93B0FA0029DE1A /* main.m */; };
 		3CF0293E1C93B0FA0029DE1A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF0293D1C93B0FA0029DE1A /* AppDelegate.m */; };
 		3CF029411C93B0FA0029DE1A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF029401C93B0FA0029DE1A /* ViewController.m */; };
@@ -42,6 +43,8 @@
 		3C857BE31CAA893700F353C5 /* AudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayer.h; sourceTree = "<group>"; };
 		3C857BE41CAA893700F353C5 /* AudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayer.m; sourceTree = "<group>"; };
 		3C89D2691CB7A25100FF3A11 /* 梁朝伟.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "梁朝伟.png"; sourceTree = "<group>"; };
+		3C89D26B1CB7A8EB00FF3A11 /* VVAudioPlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VVAudioPlayerManager.h; path = AudioPlayer/Core/VVAudioPlayerManager.h; sourceTree = "<group>"; };
+		3C89D26C1CB7A8EB00FF3A11 /* VVAudioPlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VVAudioPlayerManager.m; path = AudioPlayer/Core/VVAudioPlayerManager.m; sourceTree = "<group>"; };
 		3CF029361C93B0FA0029DE1A /* AudioDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CF0293A1C93B0FA0029DE1A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3CF0293C1C93B0FA0029DE1A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -108,6 +111,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		3C89D26D1CB7A8EB00FF3A11 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				3C89D26B1CB7A8EB00FF3A11 /* VVAudioPlayerManager.h */,
+				3C89D26C1CB7A8EB00FF3A11 /* VVAudioPlayerManager.m */,
+			);
+			name = Core;
+			path = ../../../trunk/src/vvim/vvim/Controller;
+			sourceTree = "<group>";
+		};
 		3CF0292D1C93B0FA0029DE1A = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +146,7 @@
 		3CF029381C93B0FA0029DE1A /* AudioDemo */ = {
 			isa = PBXGroup;
 			children = (
+				3C89D26D1CB7A8EB00FF3A11 /* Core */,
 				3CF0293C1C93B0FA0029DE1A /* AppDelegate.h */,
 				3CF0293D1C93B0FA0029DE1A /* AppDelegate.m */,
 				3CF0293F1C93B0FA0029DE1A /* ViewController.h */,
@@ -362,6 +376,7 @@
 				3CF029411C93B0FA0029DE1A /* ViewController.m in Sources */,
 				3CF0293E1C93B0FA0029DE1A /* AppDelegate.m in Sources */,
 				3C857BE61CAA893700F353C5 /* AudioPlayer.m in Sources */,
+				3C89D26E1CB7A8EB00FF3A11 /* VVAudioPlayerManager.m in Sources */,
 				3CF0296E1C93B1230029DE1A /* MusicPlayingController.m in Sources */,
 				3CF0293B1C93B0FA0029DE1A /* main.m in Sources */,
 			);
